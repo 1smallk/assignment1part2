@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     var displayed by remember {
-        mutableStateOf(value = false)
+        mutableStateOf(value = false) // state of the view
     }
     Column(
         modifier = Modifier
@@ -53,29 +53,27 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        if (displayed) {
+        if (displayed) { // what the screen should look like if button is clicked
             Text(
                 text = "Hello $name",
-                fontSize = 40.sp,
-                modifier = Modifier.height(50.dp)
+                fontSize = 65.sp, // hello world text placement
+                modifier = Modifier.height(90.dp) // button placement
             )
         }
-        else{
-            Spacer(modifier = Modifier.height(50.dp)) // ensures consistent button position
+        else { // what the screen should look like if button is not clicked
+            Spacer(modifier = Modifier.height(90.dp)) // keeps button in same place even wo hello world text
         }
-        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(modifier = Modifier.height(20.dp))
         Button(onClick = {
-            displayed = !displayed
+            displayed = !displayed // toggle the state of the view
         }) {
             Text(
-                text = "Greet me",
-                fontSize = 15.sp
+                text = "Greet me", // text of the button
+                fontSize = 20.sp
             )
         }
     }
 }
-
-
 
 @Preview(showBackground = true)
 @Composable
